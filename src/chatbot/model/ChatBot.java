@@ -20,7 +20,8 @@ public class ChatBot
 	 */
 	public ChatBot(String userName)
 	{
-		
+		memesList = new ArrayList<String>(); 
+		politicalTopicList = new ArrayList<String>();
 	}
 
 	private void buildMemesList()
@@ -107,7 +108,7 @@ public class ChatBot
 	 */
 	public ArrayList<String> getMemesList()
 	{
-		return null;
+		return memesList;
 	}
 
 	/**
