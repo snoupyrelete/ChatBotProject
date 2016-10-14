@@ -1,10 +1,10 @@
-package chatbot.controller;
+package chat.controller;
 
 public class ChatBotRunner
 {
 	public static void main (String [] args) 
 	{
-		ChatBotController myChatBotController = new ChatBotController();
+		ChatbotController myChatBotController = new ChatbotController();
 		myChatBotController.start();
 	}
 }

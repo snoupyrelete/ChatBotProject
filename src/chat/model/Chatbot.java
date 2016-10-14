@@ -1,4 +1,4 @@
-package chatbot.model;
+package chat.model;
 
 import java.util.ArrayList;
 
@@ -7,7 +7,7 @@ import java.util.ArrayList;
  * Students will complete methods as part * of the project. * @author Cody
  * Henrichsen * @version 1.0 10/14/15
  */
-public class ChatBot
+public class Chatbot
 {
 	private ArrayList<String> memesList;
 	private ArrayList<String> politicalTopicList;
@@ -18,10 +18,12 @@ public class ChatBot
 	 * * Creates an instance of the Chatbot with the supplied username. * @param
 	 * userName The username for the chatbot.
 	 */
-	public ChatBot(String userName)
+	public Chatbot(String userName)
 	{
 		memesList = new ArrayList<String>(); 
 		politicalTopicList = new ArrayList<String>();
+		userName = new String();
+		content = new String();
 	}
 
 	private void buildMemesList()

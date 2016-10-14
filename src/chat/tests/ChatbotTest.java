@@ -109,7 +109,6 @@ public class ChatbotTest
 		assertTrue("Meme Topic check", sampleBot.getMemesList().contains("willy wonka"));
 		assertTrue("Meme Topic check", sampleBot.getMemesList().contains("harambe"));
 		assertTrue("Meme Topic check", sampleBot.getMemesList().contains("john cena"));
-
 	}
 	
 	@Test
