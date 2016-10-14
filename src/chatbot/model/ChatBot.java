@@ -20,14 +20,17 @@ public class ChatBot
 	 */
 	public ChatBot(String userName)
 	{
+		
 	}
 
 	private void buildMemesList()
 	{
+		
 	}
 
 	private void buildPoliticalTopicsList()
 	{
+		
 	}
 
 	/**
