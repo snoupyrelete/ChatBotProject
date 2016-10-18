@@ -19,7 +19,7 @@ public class ChatbotController
 		String response = "words";
 		while (stupidBot.lengthChecker(response))
 		{
-			response = display.collectResponse("Give me something baby");
+			response = display.collectResponse("Give me something");
 		}
 		
 	}

@@ -22,8 +22,8 @@ public class Chatbot
 	{
 		memesList = new ArrayList<String>(); 
 		politicalTopicList = new ArrayList<String>();
-		userName = new String();
-		content = new String();
+		userName = new String(userName);
+		content = new String("anything");
 	}
 
 	private void buildMemesList()
@@ -89,7 +89,12 @@ public class Chatbot
 	 */
 	public boolean memeChecker(String currentInput)
 	{
-		return false;
+		boolean isMeme = false;
+		if (memesList.contains(currentInput))
+			{
+				isMeme = true;
+			}
+		return isMeme;
 	}
 
 	/**
@@ -134,6 +139,6 @@ public class Chatbot
 	 */
 	public void setContent(String content)
 	{
-		
+		this.content = content;
 	}
 }
