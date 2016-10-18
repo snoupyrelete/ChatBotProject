@@ -47,7 +47,7 @@ public class Chatbot
 		
 		if (currentInput != null && !currentInput.equals(""))
 		{
-			hasLength = false;
+			hasLength = true;
 		}
 		return hasLength;
 	}
