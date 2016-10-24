@@ -152,7 +152,7 @@ public class Chatbot
 		for (int i = 0; i < memesList.size(); i++) 
 		{
 			//memesList.ge
-			if (currentInput.equalsIgnoreCase(memesList)) 
+			if (currentInput.equalsIgnoreCase(memesList.get(i))) 
 			{
 				isMeme = true;
 			}
