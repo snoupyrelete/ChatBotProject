@@ -151,10 +151,10 @@ public class Chatbot
 		boolean isMeme = false;
 		for (int i = 0; i < memesList.size(); i++) 
 		{
-			String currentMeme = memesList.get(i);
-			if (currentMeme.equalsIgnoreCase()) 
+			//memesList.ge
+			if (currentInput.equalsIgnoreCase(memesList)) 
 			{
-				
+				isMeme = true;
 			}
 		}
 		return isMeme;
