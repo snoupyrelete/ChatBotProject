@@ -1,9 +1,19 @@
 package chat.view;
 
 import javax.swing.JOptionPane;
+import javax.swing.ImageIcon;
 
 public class ChatbotViewer
 {
+	private ImageIcon chatBotIcon;
+	
+	public ChatbotViewer()
+	{
+		chatBotIcon = new ImageIcon(getClass().getResource("images/chatbot.png"));
+	}
+	
+	
+	
 	public String collectResponse(String question) 
 	{
 		String response = "";
