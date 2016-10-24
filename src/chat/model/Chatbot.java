@@ -22,18 +22,65 @@ public class Chatbot
 	{
 		memesList = new ArrayList<String>(); 
 		politicalTopicList = new ArrayList<String>();
-		userName = new String(userName);
-		content = new String("anything");
+		buildMemesList();
+		buildPoliticalTopicsList();
+		this.userName = userName;
+		this.content = "video games";
 	}
 
 	private void buildMemesList()
 	{
-		
+		//.equalsIgnoreCase
+		memesList.add("doge");
+		memesList.add("cute animals");
+		memesList.add("grumpy cat");
+		memesList.add("dat boi");
+		memesList.add("willy wonka");
+		memesList.add("harambe");
+		memesList.add("john cena");
+		memesList.add("mr skeltal");
+		memesList.add("pupper");
+		memesList.add("pepe");
+		memesList.add("neckbeard");
+		memesList.add("shrek");
+		memesList.add("arthur");
+		memesList.add("m'lady");
+		memesList.add("fedora");
+		memesList.add("illuminati");
+		memesList.add("anonymous");
+		memesList.add("cringe");
 	}
 
 	private void buildPoliticalTopicsList()
 	{
-		
+		//.equals
+		politicalTopicList.add("Democrat");
+		politicalTopicList.add("Republican");
+		politicalTopicList.add("11/8/16");
+		politicalTopicList.add("conservative");
+		politicalTopicList.add("Clinton");
+		politicalTopicList.add("Trump");
+		politicalTopicList.add("Kaine");
+		politicalTopicList.add("Pence");
+		politicalTopicList.add("Stein");
+		politicalTopicList.add("Johnson");
+		politicalTopicList.add("election");
+		politicalTopicList.add("vote");
+		politicalTopicList.add("Donald");
+		politicalTopicList.add("Hillary");
+		politicalTopicList.add("terrorism");
+		politicalTopicList.add("ISIS");
+		politicalTopicList.add("healthcare");
+		politicalTopicList.add("America");
+		politicalTopicList.add("United States");
+		politicalTopicList.add("corruption");
+		politicalTopicList.add("scandal");
+		politicalTopicList.add("sexual harassment");
+		politicalTopicList.add("make America great again");
+		politicalTopicList.add("third party");
+		politicalTopicList.add("canidate");
+		politicalTopicList.add("liberal");
+	
 	}
 
 	/**
@@ -62,7 +109,14 @@ public class Chatbot
 	 */
 	public boolean contentChecker(String currentInput)
 	{
-		return false;
+		boolean hasContent = false;
+		
+		if (currentInput.contains(content)) 
+		{
+			hasContent = true;
+		}
+		
+		return hasContent;
 	}
 
 	/**
@@ -76,7 +130,12 @@ public class Chatbot
 	 */
 	public boolean politicalTopicChecker(String currentInput)
 	{
-		return false;
+		boolean isPoliticalTopic = false;
+		if (politicalTopicList.contains(currentInput))
+		{
+			isPoliticalTopic = true;
+		}
+		return isPoliticalTopic;
 	}
 
 	/**
