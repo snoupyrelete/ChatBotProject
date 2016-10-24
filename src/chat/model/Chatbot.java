@@ -149,10 +149,14 @@ public class Chatbot
 	public boolean memeChecker(String currentInput)
 	{
 		boolean isMeme = false;
-		if (memesList.contains(currentInput))
+		for (int i = 0; i < memesList.count; i++) 
+		{
+			String x = memesList.get(i);
+			if (x.equalsIgnoreCase()) 
 			{
-				isMeme = true;
+				
 			}
+		}
 		return isMeme;
 	}
 
