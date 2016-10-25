@@ -2,21 +2,13 @@ package chat.view;
 
 import javax.swing.JOptionPane;
 import javax.swing.ImageIcon;
-<<<<<<< HEAD
-public class ChatbotViewer
-{
-	private String windowMessage;
-	private ImageIcon ChatIcon;
-	
-	public ChatbotViewer()
-	{
-		windowMessage = "This message is from chatbot!";
-		ChatIcon = new ImageIcon(getClass().getResource("images/chatbot.png"));
-	}
-=======
 
 public class ChatbotViewer
 {
+
+
+
+
 	private ImageIcon chatBotIcon;
 	private String windowMessage;
 	public ChatbotViewer()
@@ -26,8 +18,7 @@ public class ChatbotViewer
 	}
 	
 	
-	
->>>>>>> addAnImageBranch
+
 	public String collectResponse(String question) 
 	{
 		String response = "";
@@ -50,4 +41,6 @@ public class ChatbotViewer
 		
 		return response;
 	}
+
 }
+
