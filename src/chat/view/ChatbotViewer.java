@@ -19,7 +19,7 @@ public class ChatbotViewer
 	{
 		String response = "";
 		
-		response = JOptionPane.showInputDialog(null, question);
+		response = JOptionPane.showInputDialog(null, question, windowMessage, JOptionPane.INFORMATION_MESSAGE, chatBotIcon, null, "Type here please!").toString();
 				
 		return response;
 	}
