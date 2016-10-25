@@ -6,10 +6,11 @@ import javax.swing.ImageIcon;
 public class ChatbotViewer
 {
 	private ImageIcon chatBotIcon;
-	
+	private String windowMessage;
 	public ChatbotViewer()
 	{
 		chatBotIcon = new ImageIcon(getClass().getResource("images/chatbot.png"));
+		windowMessage = "Hello from chatbot!";
 	}
 	
 	
