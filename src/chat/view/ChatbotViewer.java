@@ -26,7 +26,7 @@ public class ChatbotViewer
 	
 	public void displayMessage(String message)
 	{
-		JOptionPane.showMessageDialog(null, message);
+		JOptionPane.showMessageDialog(null, message, windowMessage, JOptionPane.PLAIN_MESSAGE, chatBotIcon);
 	}
 	
 	public int collectUserOption(String question)
