@@ -40,11 +40,19 @@ public class ChatbotController
 		{
 			checkedInput += "\nYou like politics\n";
 		}
-//		if(stupidBot.twitter)
+		if(stupidBot.twitterChecker(input))
+		{
+			checkedInput += "\nYou like to tweet\n";
+		}
+		if(stupidBot.inputHTMLChecker(input))
+		{
+			checkedInput += "You like HTML...I guess?";
+		}
 		if(checkedInput.length() == 0)
 		{
 			checkedInput = "I don't know what " + input + " is";
 		}
+		
 		
 		return checkedInput;
 	}

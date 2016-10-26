@@ -118,6 +118,7 @@ public class Chatbot
 		
 		return hasContent;
 	}
+	
 	public boolean twitterChecker(String currentInput)
 	{
 		boolean isTweet = false;
@@ -130,6 +131,7 @@ public class Chatbot
 		}
 		return isTweet;
 	}
+	
 	public boolean inputHTMLChecker(String currentInput)
 	{
 		boolean isValidHTML = false;
@@ -147,6 +149,26 @@ public class Chatbot
 			isValidHTML = true;		
 		}
 		return isValidHTML;
+	}
+	
+	public boolean quitChecker(String currentInput)
+	{
+		boolean userInitiatedQuit = false;
+		if(currentInput.equals("quit"))
+		{
+			userInitiatedQuit = true;
+		}
+		return userInitiatedQuit;
+	}
+	
+	public boolean keyboardMashChecker(String currentInput)
+	{
+		boolean isMash = false;
+		if(currentInput.equals("sdf") || currentInput.equals("dfg") || currentInput.equals("cvb") || currentInput.equals(",./"))
+		{
+			isMash = true;
+		}
+			return isMash; 
 	}
 
 	/**
