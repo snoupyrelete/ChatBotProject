@@ -40,6 +40,7 @@ public class ChatbotController
 		{
 			checkedInput += "\nYou like politics\n";
 		}
+//		if(stupidBot.twitter)
 		if(checkedInput.length() == 0)
 		{
 			checkedInput = "I don't know what " + input + " is";

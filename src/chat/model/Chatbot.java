@@ -118,6 +118,18 @@ public class Chatbot
 		
 		return hasContent;
 	}
+	public boolean twitterChecker(String currentInput)
+	{
+		boolean isTweet = false;
+		if(currentInput.startsWith("#"))
+		{
+			isTweet = true;
+		} else if (currentInput.startsWith("@"))
+		{
+			isTweet = true;
+		}
+		return isTweet;
+	}
 
 	/**
 	 * * Checks if supplied String matches ANY of the topics in the
