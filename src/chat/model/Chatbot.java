@@ -130,6 +130,24 @@ public class Chatbot
 		}
 		return isTweet;
 	}
+	public boolean inputHTMLChecker(String currentInput)
+	{
+		boolean isValidHTML = false;
+		if (currentInput.startsWith("<B>") && currentInput.endsWith("</B>"))
+		{
+			isValidHTML = true;
+		} else if (currentInput.startsWith("<I>") && currentInput.endsWith("</i>"))
+		{
+			isValidHTML = true;
+		} else if (currentInput.startsWith("<P>"))
+		{
+			isValidHTML = true;
+		} else if (currentInput.startsWith("<A HREF="))
+		{
+			isValidHTML = true;		
+		}
+		return isValidHTML;
+	}
 
 	/**
 	 * * Checks if supplied String matches ANY of the topics in the
