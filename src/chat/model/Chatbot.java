@@ -150,7 +150,10 @@ public class Chatbot
 		}
 		return isValidHTML;
 	}
-	
+	/**
+	 * @param currentInput The String to check
+	 * @return A boolean value indicating if the user wanted to quit or not
+	 */
 	public boolean quitChecker(String currentInput)
 	{
 		boolean userInitiatedQuit = false;
