@@ -14,7 +14,7 @@ public class ChatbotViewer
 	public ChatbotViewer()
 	{
 		chatBotIcon = new ImageIcon(getClass().getResource("images/chatbot.png"));
-		windowMessage = "Hello from chatbot!";
+		windowMessage = "SwagBot";
 	}
 	
 	

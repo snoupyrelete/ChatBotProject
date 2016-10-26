@@ -122,6 +122,7 @@ public class Chatbot
 	public boolean twitterChecker(String currentInput)
 	{
 		boolean isTweet = false;
+		currentInput = currentInput.trim();
 		if(currentInput.startsWith("#"))
 		{
 			isTweet = true;
