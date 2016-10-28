@@ -122,11 +122,17 @@ public class Chatbot
 	public boolean twitterChecker(String currentInput)
 	{
 		boolean isTweet = false;
-		currentInput = currentInput.trim();
-		if(currentInput.startsWith("#"))
+		int indexOfHashtag = -1;
+		int indexOfAtSign = -1;
+		
+//		currentInput = currentInput.trim();
+		indexOfHashtag = currentInput.indexOf("#");
+		indexOfAtSign = currentInput.indexOf("@");
+		
+		if(indexOfHashtag != -1 && !currentInput.substring(indexOfHashtag + 1, indexOfHashtag + 2).equals(" "))
 		{
 			isTweet = true;
-		} else if (currentInput.startsWith("@"))
+		} else if (indexOfAtSign != -1 && !currentInput.substring(indexOfAtSign + 1, indexOfAtSign + 2).equals(" "))
 		{
 			isTweet = true;
 		}
