@@ -111,7 +111,7 @@ public class Chatbot
 	{
 		boolean hasContent = false;
 		
-		if (currentInput.contains(content)) 
+		if (currentInput.toLowerCase().contains(content.toLowerCase())) 
 		{
 			hasContent = true;
 		}
