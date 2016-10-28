@@ -125,7 +125,6 @@ public class Chatbot
 		int indexOfHashtag = -1;
 		int indexOfAtSign = -1;
 		
-//		currentInput = currentInput.trim();
 		indexOfHashtag = currentInput.indexOf("#");
 		indexOfAtSign = currentInput.indexOf("@");
 		
