@@ -60,4 +60,12 @@ public class ChatController
 		
 		return checkedInput;
 	}
+	public ChatFrame getBaseFrame()
+	{
+		return chatFrame;
+	}
+	public Chatbot getChatbot()
+	{
+		return stupidBot;
+	}
 }
