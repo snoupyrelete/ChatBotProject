@@ -1,27 +1,31 @@
 package chat.controller;
 
 import chat.model.Chatbot;
+import chat.view.ChatFrame;
+import chat.view.ChatPanel;
 import chat.view.ChatbotViewer;
 
 public class ChatController
 {
 	private Chatbot stupidBot;
 	private ChatbotViewer display;
+	private ChatFrame chatFrame;
 	
 	public ChatController()
 	{
 		stupidBot = new Chatbot("ROBO-BOT-AUTONOMOUS-MECHANICAL-AI-LEARNING-HUMAN-TALK-MACHINE-TO-ACQUIRE-CURRENCY-AND-HUMAN-FEMALES");
 		display = new ChatbotViewer();
+		chatFrame = new ChatFrame(this);
 	}
 	
 	public void start() 
 	{
-		String response = display.collectResponse("Give me something");
-		while (stupidBot.lengthChecker(response))
-		{
-			display.displayMessage(useChatbotCheckers(response));
-			response = display.collectResponse("You want to talk about " + response +"? Tell me more...");
-		}
+//		String response = display.collectResponse("Give me something");
+//		while (stupidBot.lengthChecker(response))
+//		{
+//			display.displayMessage(useChatbotCheckers(response));
+//			response = display.collectResponse("You want to talk about " + response +"? Tell me more...");
+//		}
 		
 	}
 	
