@@ -1,12 +1,8 @@
 package chat.view;
 
 import java.awt.Color;
-import javax.swing.JPanel;
 import chat.controller.ChatController;
-import javax.swing.SpringLayout;
-import javax.swing.JTextField;
-import javax.swing.JTextArea;
-import javax.swing.SwingConstants;
+import javax.swing.*;
 
 public class ChatPanel extends JPanel
 {
@@ -14,6 +10,7 @@ public class ChatPanel extends JPanel
 	private JTextField entryField;
 	private JTextArea displayText;
 	private SpringLayout baseLayout;
+	private JButton enterButton;
 	
 	public ChatPanel(ChatController baseController)
 	{
@@ -24,7 +21,7 @@ public class ChatPanel extends JPanel
 		entryField = new JTextField("Enter here!");
 		
 		displayText = new JTextArea("What do you want to talk about?");
-		
+		enterButton = new JButton("Enter!");
 		setupPanel();
 		setupLayout();
 		setupListeners();
@@ -34,8 +31,10 @@ public class ChatPanel extends JPanel
 	{
 		this.setLayout(baseLayout);
 		this.setBackground(Color.RED);
+		entryField.isEnabled();
 		this.add(entryField);
 		this.add(displayText);
+		this.add(enterButton);
 	}
 	
 	private void setupLayout()
