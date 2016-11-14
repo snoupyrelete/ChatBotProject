@@ -3,6 +3,7 @@ package chat.view;
 import javax.swing.JFrame;
 import java.awt.Dimension;
 import chat.controller.ChatController;
+import javax.swing.JLabel;
 
 public class ChatFrame extends JFrame
 {

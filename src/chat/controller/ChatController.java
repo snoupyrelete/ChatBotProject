@@ -29,7 +29,7 @@ public class ChatController
 		
 	}
 	
-	private String useChatbotCheckers(String input) 
+	public String useChatbotCheckers(String input) 
 	{
 		String checkedInput = "";
 		if (stupidBot.memeChecker(input))
