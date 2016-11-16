@@ -26,7 +26,8 @@ public class ChatPanel extends JPanel
 		this.baseController = baseController;
 		
 		baseLayout = new SpringLayout();
-		entryField = new JTextField("Enter here!");
+		entryField = new JTextField("\n");
+		entryField.setToolTipText("Enter Here!");
 		displayText = new JTextArea("What do you want to talk about?");
 		enterButton = new JButton("Enter!");
 		checkBox = new JCheckBox("Change Color!");
@@ -82,8 +83,8 @@ public class ChatPanel extends JPanel
 		{
 			public void actionPerformed(ActionEvent selection)
 			{
-				//displayText.setText("You want to talk about: \'" + entryField.getText() + "\'");
 				displayText.setText(baseController.useChatbotCheckers(entryField.getText()));
+				entryField.setText("");
 			}
 		});
 		checkBox.addActionListener(new ActionListener()
