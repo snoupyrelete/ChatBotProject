@@ -60,6 +60,14 @@ public class ChatController
 		
 		return checkedInput;
 	}
+	
+	public String communicateWithChatbot(String userText)
+	{
+		String response = "";
+		
+		return response;
+	}
+	
 	public ChatFrame getBaseFrame()
 	{
 		return chatFrame;

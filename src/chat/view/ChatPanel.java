@@ -29,7 +29,8 @@ public class ChatPanel extends JPanel
 		entryField = new JTextField("Enter here!");
 		displayText = new JTextArea("What do you want to talk about?");
 		enterButton = new JButton("Enter!");
-		checkBox = new JCheckBox("Check it!");
+		checkBox = new JCheckBox("Change Color!");
+		
 		
 		setupDisplayText();
 		setupPanel();
@@ -61,16 +62,18 @@ public class ChatPanel extends JPanel
 	private void setupLayout()
 	{
 		baseLayout.putConstraint(SpringLayout.SOUTH, displayText, -170, SpringLayout.SOUTH, this);
-		baseLayout.putConstraint(SpringLayout.NORTH, entryField, 6, SpringLayout.SOUTH, displayText);
-		baseLayout.putConstraint(SpringLayout.WEST, displayText, 124, SpringLayout.WEST, this);
 		entryField.setHorizontalAlignment(SwingConstants.CENTER);
-		baseLayout.putConstraint(SpringLayout.WEST, entryField, 124, SpringLayout.WEST, this);
-		baseLayout.putConstraint(SpringLayout.EAST, entryField, -124, SpringLayout.EAST, this);
 		entryField.setBackground(Color.ORANGE);
-		baseLayout.putConstraint(SpringLayout.WEST, enterButton, 180, SpringLayout.WEST, this);
-		baseLayout.putConstraint(SpringLayout.SOUTH, enterButton, -22, SpringLayout.NORTH, displayText);
-		baseLayout.putConstraint(SpringLayout.NORTH, checkBox, 21, SpringLayout.SOUTH, entryField);
-		baseLayout.putConstraint(SpringLayout.WEST, checkBox, 0, SpringLayout.WEST, enterButton);
+		baseLayout.putConstraint(SpringLayout.EAST, entryField, 0, SpringLayout.EAST, displayText);
+		baseLayout.putConstraint(SpringLayout.WEST, displayText, 124, SpringLayout.WEST, this);
+		baseLayout.putConstraint(SpringLayout.EAST, displayText, -124, SpringLayout.EAST, this);
+		baseLayout.putConstraint(SpringLayout.NORTH, entryField, 6, SpringLayout.SOUTH, displayText);
+		baseLayout.putConstraint(SpringLayout.WEST, entryField, 0, SpringLayout.WEST, displayText);
+		baseLayout.putConstraint(SpringLayout.NORTH, checkBox, 6, SpringLayout.SOUTH, enterButton);
+		baseLayout.putConstraint(SpringLayout.EAST, checkBox, -179, SpringLayout.EAST, this);
+		baseLayout.putConstraint(SpringLayout.NORTH, enterButton, 4, SpringLayout.SOUTH, entryField);
+		baseLayout.putConstraint(SpringLayout.WEST, enterButton, 0, SpringLayout.WEST, entryField);
+		baseLayout.putConstraint(SpringLayout.EAST, enterButton, 0, SpringLayout.EAST, entryField);
 	}
 	
 	private void setupListeners()
@@ -83,5 +86,21 @@ public class ChatPanel extends JPanel
 				displayText.setText(baseController.useChatbotCheckers(entryField.getText()));
 			}
 		});
+		checkBox.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent selection)
+			{
+				changeBackground();
+			}
+		});
+	}
+	
+	private void changeBackground()
+	{
+		int red = (int) (Math.random() * 256);
+		int green = (int) (Math.random() * 256);
+		int blue = (int) (Math.random() * 256);
+		
+		this.setBackground(new Color(red, green, blue));
 	}
 }
