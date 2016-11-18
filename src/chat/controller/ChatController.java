@@ -90,7 +90,7 @@ public class ChatController
 			randomTopic = "Futbol = false";
 			break;
 		default:
-			randomTopic = "?!!?!?!?!?";
+			randomTopic = "OH, NO WHAT'S GOING ON THIS SHOULDN'T BE HAPPENING!";
 			break;
 		}
 		return randomTopic;
