@@ -20,12 +20,12 @@ public class ChatController
 	
 	public void start() 
 	{
-//		String response = display.collectResponse("Give me something");
-//		while (stupidBot.lengthChecker(response))
-//		{
-//			display.displayMessage(useChatbotCheckers(response));
-//			response = display.collectResponse("You want to talk about " + response +"? Tell me more...");
-//		}
+	//		String response = display.collectResponse("Give me something");
+	//		while (stupidBot.lengthChecker(response))
+	//		{
+	//			display.displayMessage(useChatbotCheckers(response));
+	//			response = display.collectResponse("You want to talk about " + response +"? Tell me more...");
+	//		}
 		
 	}
 	
