@@ -15,8 +15,8 @@ public class Chatbot
 	private String content;
 
 	/**
-	 * * Creates an instance of the Chatbot with the supplied username. * @param
-	 * userName The username for the chatbot.
+	 * * Creates an instance of the Chatbot with the supplied username. 
+	 * * @param userName The username for the chatbot.
 	 */
 	public Chatbot(String userName)
 	{
@@ -27,7 +27,9 @@ public class Chatbot
 		this.userName = userName;
 		this.content = "video games";
 	}
-
+	/**
+	 * * Creates the memes list.
+	 */
 	private void buildMemesList()
 	{
 		//.equalsIgnoreCase

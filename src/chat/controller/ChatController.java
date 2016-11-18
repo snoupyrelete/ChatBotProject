@@ -54,11 +54,46 @@ public class ChatController
 		}
 		if(checkedInput.length() == 0)
 		{
-			checkedInput = "I don't know what " + input + " is";
+			checkedInput = "I don't know what" + input + " is";
 		}
-		
+		checkedInput += " " + randomTopicGenerator();
 		
 		return checkedInput;
+	}
+	
+	private String randomTopicGenerator()
+	{
+		String randomTopic = "";
+		int random = (int) (Math.random() * 7);
+		
+		switch(random)
+		{
+		case 0:
+			randomTopic = "I like video games!";
+			break;
+		case 1:
+			randomTopic = "Football = true";
+			break;
+		case 2:
+			randomTopic = "Futbol = false";
+			break;
+		case 3:
+			randomTopic = "code?";
+			break;
+		case 4:
+			randomTopic = "I am a robot! What are you?";
+			break;
+		case 5:
+			randomTopic = "What's your name?";
+			break;
+		case 6:
+			randomTopic = "Futbol = false";
+			break;
+		default:
+			randomTopic = "?!!?!?!?!?";
+			break;
+		}
+		return randomTopic;
 	}
 	
 	public ChatFrame getBaseFrame()
