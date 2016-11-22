@@ -4,12 +4,12 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>190</x>
-      <y>150</y>
+      <x>20</x>
+      <y>170</y>
       <w>290</w>
       <h>110</h>
     </coordinates>
-    <panel_attributes>chatbot.controller :: ChatBotRunner
+    <panel_attributes>chat.controller :: ChatBotRunner
 --
 
 --
@@ -21,8 +21,8 @@ group=5</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>920</x>
-      <y>110</y>
+      <x>750</x>
+      <y>130</y>
       <w>300</w>
       <h>110</h>
     </coordinates>
@@ -39,12 +39,12 @@ group=3</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>190</x>
-      <y>270</y>
+      <x>20</x>
+      <y>290</y>
       <w>290</w>
       <h>110</h>
     </coordinates>
-    <panel_attributes>chatbot.controller :: ChatBotController
+    <panel_attributes>chat.controller :: ChatController
 --
 - myChatBot : ChatBot
 - chatView : ChatBotViewer
@@ -58,14 +58,17 @@ group=5</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>560</x>
-      <y>120</y>
+      <x>390</x>
+      <y>140</y>
       <w>300</w>
       <h>110</h>
     </coordinates>
-    <panel_attributes>chatbot.model :: ChatBot
+    <panel_attributes>chatbot.model :: Chatbot
 --
-
+- memesList
+- politicalTopicList
+- userName
+- content
 --
 
 group=4</panel_attributes>
@@ -74,8 +77,8 @@ group=4</panel_attributes>
   <element>
     <id>UMLPackage</id>
     <coordinates>
-      <x>910</x>
-      <y>80</y>
+      <x>740</x>
+      <y>100</y>
       <w>330</w>
       <h>330</h>
     </coordinates>
@@ -88,8 +91,8 @@ group=3</panel_attributes>
   <element>
     <id>UMLPackage</id>
     <coordinates>
-      <x>170</x>
-      <y>70</y>
+      <x>0</x>
+      <y>90</y>
       <w>330</w>
       <h>350</h>
     </coordinates>
@@ -102,8 +105,8 @@ group=5</panel_attributes>
   <element>
     <id>UMLPackage</id>
     <coordinates>
-      <x>550</x>
-      <y>80</y>
+      <x>380</x>
+      <y>100</y>
       <w>330</w>
       <h>330</h>
     </coordinates>
