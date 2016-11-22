@@ -4,7 +4,11 @@ import chat.model.Chatbot;
 import chat.view.ChatFrame;
 import chat.view.ChatPanel;
 import chat.view.ChatbotViewer;
-
+/**
+ * The controller class for chatbot, which communicates between the model and view.
+ * @author drob8896
+ * @version 1.0 11/22/16
+ */
 public class ChatController
 {
 	private Chatbot stupidBot;
@@ -18,6 +22,13 @@ public class ChatController
 		stupidBot = new Chatbot("ROBO-BOT-AUTONOMOUS-MECHANICAL-AI-LEARNING-HUMAN-TALK-MACHINE-TO-ACQUIRE-CURRENCY-AND-HUMAN-FEMALES");
 		display = new ChatbotViewer();
 		chatFrame = new ChatFrame(this);
+	}
+	/**
+	 * Called from the runner, not yet implemented.
+	 */
+	public void start()
+	{
+		
 	}
 	/**
 	* Uses all of the chatbot model's checkers to create a response

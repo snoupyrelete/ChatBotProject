@@ -28,6 +28,10 @@ public class Chatbot
 		this.userName = userName;
 		this.content = "video games";
 	}
+	public void start()
+	{
+		
+	}
 	/**
 	 * Adds several memes to the memesList ArrayList
 	 */
