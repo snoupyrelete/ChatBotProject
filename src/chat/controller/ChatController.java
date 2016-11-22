@@ -20,44 +20,45 @@ public class ChatController
 	
 	public void start() 
 	{
-	//		String response = display.collectResponse("Give me something");
-	//		while (stupidBot.lengthChecker(response))
-	//		{
-	//			display.displayMessage(useChatbotCheckers(response));
-	//			response = display.collectResponse("You want to talk about " + response +"? Tell me more...");
-	//		}
 		
 	}
 	
 	public String useChatbotCheckers(String input) 
 	{
 		String checkedInput = "";
-		if (stupidBot.memeChecker(input))
+		if (!stupidBot.quitChecker(input))
 		{
-			checkedInput += "\nYou like memes!\n";
-		}
-		if(stupidBot.contentChecker(input))
-		{
-			checkedInput += "\nYou kow my secret topic!\n";
-		}
-		if(stupidBot.politicalTopicChecker(input))
-		{
-			checkedInput += "\nYou like politics\n";
-		}
-		if(stupidBot.twitterChecker(input))
-		{
-			checkedInput += "\nYou like to tweet\n";
-		}
-		if(stupidBot.inputHTMLChecker(input))
-		{
-			checkedInput += "You like HTML...I guess?";
-		}
-		if(checkedInput.length() == 0)
-		{
-			checkedInput = "I don't know what" + input + " is";
-		}
+			if (stupidBot.memeChecker(input))
+			{
+				checkedInput += "\nYou like memes!\n";
+			}
+			if(stupidBot.contentChecker(input))
+			{
+				checkedInput += "\nYou kow my secret topic!\n";
+			}
+			if(stupidBot.politicalTopicChecker(input))
+			{
+				checkedInput += "\nYou like politics\n";
+			}
+			if(stupidBot.twitterChecker(input))
+			{
+				checkedInput += "\nYou like to tweet\n";
+			}
+			if(stupidBot.inputHTMLChecker(input))
+			{
+				checkedInput += "You like HTML...I guess?";
+			}
+			if(checkedInput.length() == 0)
+			{
+				checkedInput = "I don't know what" + input + " is";
+			}
 		checkedInput += " " + randomTopicGenerator();
-		
+		}
+		else 
+		{
+			display.displayMessage("Thanks for chatting. Talk to you soon ;)");
+			System.exit(0);
+		}
 		return checkedInput;
 	}
 	
