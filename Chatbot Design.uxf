@@ -5,7 +5,7 @@
     <id>UMLClass</id>
     <coordinates>
       <x>20</x>
-      <y>170</y>
+      <y>110</y>
       <w>290</w>
       <h>110</h>
     </coordinates>
@@ -21,26 +21,27 @@ group=5</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>750</x>
-      <y>130</y>
+      <x>960</x>
+      <y>80</y>
       <w>300</w>
       <h>110</h>
     </coordinates>
-    <panel_attributes>chatbot.view :: ChatBotViewer
+    <panel_attributes>chat.view :: ChatBotViewer
 --
 
 --
 + collectResponse(String) : String
 + displayMessage(String) : void
 + collectUserOption(String) : int
-group=3</panel_attributes>
+layer=1
+group=6</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
       <x>20</x>
-      <y>290</y>
+      <y>230</y>
       <w>290</w>
       <h>110</h>
     </coordinates>
@@ -49,7 +50,7 @@ group=3</panel_attributes>
 - myChatBot : ChatBot
 - chatView : ChatBotViewer
 --
-+ start : void
++ start() : void
 + get/set
 
 group=5</panel_attributes>
@@ -59,17 +60,27 @@ group=5</panel_attributes>
     <id>UMLClass</id>
     <coordinates>
       <x>390</x>
-      <y>140</y>
-      <w>300</w>
-      <h>110</h>
+      <y>80</y>
+      <w>330</w>
+      <h>420</h>
     </coordinates>
     <panel_attributes>chatbot.model :: Chatbot
 --
-- memesList
-- politicalTopicList
-- userName
-- content
+- memesList : ArrayList&lt;String&gt;
+- politicalTopicList : ArrayList&lt;String&gt;
+- userName : String
+- content : String
 --
++ memeChecker(String) : boolean
++ politicalTopicChecker(String) : boolean
++ keyboardMashChecker(String) : boolean
++ quitChecker(String) : boolean
++ inputHTMLChecker(String) : boolean
++ twitterChecker(String) : boolean
++ contentChecker(String) : boolean
++ lengthChecker(String) : boolean
+- buildPoliticalTopicList() : void
+- buildMemesList() : void
 
 group=4</panel_attributes>
     <additional_attributes/>
@@ -77,22 +88,23 @@ group=4</panel_attributes>
   <element>
     <id>UMLPackage</id>
     <coordinates>
-      <x>740</x>
-      <y>100</y>
-      <w>330</w>
-      <h>330</h>
+      <x>950</x>
+      <y>50</y>
+      <w>640</w>
+      <h>590</h>
     </coordinates>
     <panel_attributes>View
 --
+layer=1
 bg=magenta
-group=3</panel_attributes>
+group=6</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLPackage</id>
     <coordinates>
       <x>0</x>
-      <y>90</y>
+      <y>30</y>
       <w>330</w>
       <h>350</h>
     </coordinates>
@@ -106,14 +118,63 @@ group=5</panel_attributes>
     <id>UMLPackage</id>
     <coordinates>
       <x>380</x>
-      <y>100</y>
-      <w>330</w>
-      <h>330</h>
+      <y>40</y>
+      <w>460</w>
+      <h>670</h>
     </coordinates>
     <panel_attributes>Model
 --
 bg=green
 group=4</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>960</x>
+      <y>200</y>
+      <w>360</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>chat.view :: ChatFrame
+--
+- baseController : ChatController 
+- chatPanel : ChatPanel
+--
++ ChatFrame(ChatController)
+- setupFrame() : void
+
+
+layer=2
+group=6</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>960</x>
+      <y>320</y>
+      <w>420</w>
+      <h>270</h>
+    </coordinates>
+    <panel_attributes>chat.view :: ChatPanel
+--
+- baseController : ChatController
+- entryField : JTextField
+- displayText : JTextArea
+- baseLayout : SpringLayout
+- enterButton : JButton
+- checkBox : JCheckBox
+--
++ ChatPanel(ChatController)
+- changeBackground() : void
+- setupListeners() : void
+- setupLayout() : void
+- setupPanel() : void
+- setupDisplayText() : void
+
+layer=2
+group=6</panel_attributes>
     <additional_attributes/>
   </element>
 </diagram>
