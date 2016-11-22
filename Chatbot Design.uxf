@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.2">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>190</x>
+      <y>150</y>
+      <w>290</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>chatbot.controller :: ChatBotRunner
+--
+
+--
++ main : void
+
+group=5</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>920</x>
+      <y>110</y>
+      <w>300</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>chatbot.view :: ChatBotViewer
+--
+
+--
++ collectResponse(String) : String
++ displayMessage(String) : void
++ collectUserOption(String) : int
+group=3</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>190</x>
+      <y>270</y>
+      <w>290</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>chatbot.controller :: ChatBotController
+--
+- myChatBot : ChatBot
+- chatView : ChatBotViewer
+--
++ start : void
++ get/set
+
+group=5</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>560</x>
+      <y>120</y>
+      <w>300</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>chatbot.model :: ChatBot
+--
+
+--
+
+group=4</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>910</x>
+      <y>80</y>
+      <w>330</w>
+      <h>330</h>
+    </coordinates>
+    <panel_attributes>View
+--
+bg=magenta
+group=3</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>170</x>
+      <y>70</y>
+      <w>330</w>
+      <h>350</h>
+    </coordinates>
+    <panel_attributes>Controller
+--
+bg=red
+group=5</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>550</x>
+      <y>80</y>
+      <w>330</w>
+      <h>330</h>
+    </coordinates>
+    <panel_attributes>Model
+--
+bg=green
+group=4</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>
