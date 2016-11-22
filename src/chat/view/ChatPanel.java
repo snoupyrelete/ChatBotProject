@@ -1,15 +1,16 @@
 package chat.view;
 
 import java.awt.Color;
-
 import chat.controller.ChatController;
-
 import javax.swing.*;
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-
+/**
+ * The ChatPanel to display the GUI to the user
+ * @author Dylan Robson
+ * @version 1.0 11/22/16
+ */
 public class ChatPanel extends JPanel
 {
 	private ChatController baseController;
@@ -18,8 +19,10 @@ public class ChatPanel extends JPanel
 	private SpringLayout baseLayout;
 	private JButton enterButton;
 	private JCheckBox checkBox;
-	//private JImage chatImage;
-	
+	/**
+	 * Constructor to create a new ChatPanel with several components.
+	 * @param baseController the ChatController used to communicate with the controller
+	 */
 	public ChatPanel(ChatController baseController)
 	{
 		super();
@@ -38,7 +41,9 @@ public class ChatPanel extends JPanel
 		setupLayout();
 		setupListeners();
 	}
-	
+	/**
+	 * A helper method to set the displayText as not editable and not enabled.
+	 */
 	private void setupDisplayText()
 	{
 		displayText.setEditable(false);
@@ -46,6 +51,10 @@ public class ChatPanel extends JPanel
 		displayText.setWrapStyleWord(true);
 		displayText.setLineWrap(true);
 	}
+	/**
+	 * Sets up the panel with its layout, a background color, and adds any components 
+	 * to the panel.
+	 */
 	private void setupPanel() 
 	{
 		this.setLayout(baseLayout);
@@ -59,7 +68,9 @@ public class ChatPanel extends JPanel
 		this.add(enterButton);
 		this.add(checkBox);
 	}
-	
+	/**
+	 * A code dump helper method for keeping all the constraint code in a contained area.
+	 */
 	private void setupLayout()
 	{
 		baseLayout.putConstraint(SpringLayout.SOUTH, displayText, -170, SpringLayout.SOUTH, this);
@@ -76,7 +87,10 @@ public class ChatPanel extends JPanel
 		baseLayout.putConstraint(SpringLayout.WEST, enterButton, 0, SpringLayout.WEST, entryField);
 		baseLayout.putConstraint(SpringLayout.EAST, enterButton, 0, SpringLayout.EAST, entryField);
 	}
-	
+	/**
+	 * adds ActionListeners to the enterButton and checkBox, to send text to the chatbot and
+	 * change the background color, respectively.
+	 */
 	private void setupListeners()
 	{
 		enterButton.addActionListener(new ActionListener()
@@ -95,7 +109,10 @@ public class ChatPanel extends JPanel
 			}
 		});
 	}
-	
+	/**
+	 * Generates a random RGB color and sets the panel's background to
+	 * the generated color.
+	 */
 	private void changeBackground()
 	{
 		int red = (int) (Math.random() * 256);

@@ -15,8 +15,9 @@ public class Chatbot
 	private String content;
 
 	/**
-	 * * Creates an instance of the Chatbot with the supplied username. 
-	 * * @param userName The username for the chatbot.
+	 * Constructor for an instance of the Chatbot with the supplied 
+	 * username. 
+	 * @param userName The username for the chatbot.
 	 */
 	public Chatbot(String userName)
 	{
@@ -28,7 +29,7 @@ public class Chatbot
 		this.content = "video games";
 	}
 	/**
-	 * * Creates the memes list.
+	 * Adds several memes to the memesList ArrayList
 	 */
 	private void buildMemesList()
 	{
@@ -52,7 +53,9 @@ public class Chatbot
 		memesList.add("anonymous");
 		memesList.add("cringe");
 	}
-
+	/*
+	 * Adds several political topics to the PoliticalTopicList ArrayList
+	 */
 	private void buildPoliticalTopicsList()
 	{
 		//.equals
@@ -86,9 +89,10 @@ public class Chatbot
 	}
 
 	/**
-	 * * Checks the length of the supplied string. Returns false if the supplied
-	 * String is empty or null, otherwise returns true. * @param currentInput * @return
-	 * A true or false based on the length of the supplied String.
+	 * Checks the length of the supplied string.
+	 * @param currentInput the input to check the length of
+	 * @return A boolean value based on the length of the supplied String. 
+	 * True if length != 0 or != null, otherwise false
 	 */
 	public boolean lengthChecker(String currentInput)
 	{
@@ -102,12 +106,10 @@ public class Chatbot
 	}
 
 	/**
-	 * * Checks if the supplied String matches the content area for this Chatbot
+	 * Checks if the supplied String matches the content area for this Chatbot
 	 * instance.
-	 * 
-	 * @param currentInput
-	 *            The supplied String to be checked. * @return Whether it
-	 *            matches the content area.
+	 * @param currentInput The supplied String to be checked.
+	 * @return A boolean value indicating whether it matches the content area or not.
 	 */
 	public boolean contentChecker(String currentInput)
 	{
@@ -120,7 +122,11 @@ public class Chatbot
 		
 		return hasContent;
 	}
-	
+	/**
+	 * Checks to see if the input is a tweet, with either '#' or '@'
+	 * @param currentInput the String to check
+	 * @return a boolean value if the input was a tweet
+	 */
 	public boolean twitterChecker(String currentInput)
 	{
 		boolean isTweet = false;
@@ -139,7 +145,11 @@ public class Chatbot
 		}
 		return isTweet;
 	}
-	
+	/**
+	 * Checks to see if the input is valid HTML
+	 * @param currentInput the String to check
+	 * @return a boolean value based on the input being valid HTML or not.
+	 */
 	public boolean inputHTMLChecker(String currentInput)
 	{
 		boolean isValidHTML = false;
@@ -159,6 +169,7 @@ public class Chatbot
 		return isValidHTML;
 	}
 	/**
+	 * Checks to see if the user quit
 	 * @param currentInput The String to check
 	 * @return A boolean value indicating if the user wanted to quit or not
 	 */
@@ -171,7 +182,11 @@ public class Chatbot
 		}
 		return userInitiatedQuit;
 	}
-	
+	/**
+	 * Checks if the input was a preset of a certain combination of non-real worlds
+	 * @param currentInput the input to check
+	 * @return a boolean value based on if the input was keyboard mash or not.
+	 */
 	public boolean keyboardMashChecker(String currentInput)
 	{
 		boolean isMash = false;
@@ -183,13 +198,12 @@ public class Chatbot
 	}
 
 	/**
-	 * * Checks if supplied String matches ANY of the topics in the
+	 * Checks if supplied String matches ANY of the topics in the
 	 * politicalTopicsList. Returns true if it does find a match and false if it
 	 * does not match.
-	 * 
-	 * @param currentInput
-	 *            The supplied String to be checked. * @return Whether the
-	 *            String is contained in the ArrayList.
+	 * @param currentInput The supplied String to be checked. 
+     * @return A boolean value indicating whether the String is 
+     * contained in the PoliticalTopicList
 	 */
 	public boolean politicalTopicChecker(String currentInput)
 	{
@@ -202,19 +216,17 @@ public class Chatbot
 	}
 
 	/**
-	 * * Checks to see that the supplied String value is in the current
+	 * Checks to see that the supplied String value is in the current
 	 * memesList variable.
-	 * 
-	 * @param currentInput
-	 *            The supplied String to be checked. * @return Whether the
-	 *            supplied String is a recognized meme.
+	 * @param currentInput The supplied String to be checked. 
+	 * @return a boolean value indicating whether the 
+	 * supplied String is a recognized meme from the memesList.
 	 */
 	public boolean memeChecker(String currentInput)
 	{
 		boolean isMeme = false;
 		for (int i = 0; i < memesList.size(); i++) 
 		{
-			//memesList.ge
 			if (currentInput.equalsIgnoreCase(memesList.get(i))) 
 			{
 				isMeme = true;
@@ -223,46 +235,22 @@ public class Chatbot
 		return isMeme;
 	}
 
-	/**
-	 * * Returns the username of this Chatbot instance. * @return The username
-	 * of the Chatbot.
-	 */
 	public String getUserName()
 	{
 		return userName;
 	}
-
-	/**
-	 * * Returns the content area for this Chatbot instance. * @return The
-	 * content area for this Chatbot instance.
-	 */
 	public String getContent()
 	{
 		return content;
 	}
-
-	/**
-	 * * Getter method for the memesList object. * @return The reference to the
-	 * meme list.
-	 */
 	public ArrayList<String> getMemesList()
 	{
 		return memesList;
 	}
-
-	/**
-	 * * Getter method for the politicalTopicList object. * @return The
-	 * reference to the political topic list.
-	 */
 	public ArrayList<String> getPoliticalTopicList()
 	{
 		return politicalTopicList;
 	}
-
-	/**
-	 * * Updates the content area for this Chatbot instance. * @param content
-	 * The updated value for the content area.
-	 */
 	public void setContent(String content)
 	{
 		this.content = content;

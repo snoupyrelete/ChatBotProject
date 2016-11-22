@@ -10,19 +10,21 @@ public class ChatController
 	private Chatbot stupidBot;
 	private ChatbotViewer display;
 	private ChatFrame chatFrame;
-	
+	/**
+	* Constructor for the controller, which creates a Chatbot model, ChatbotViewer and chatFrame.
+	*/
 	public ChatController()
 	{
 		stupidBot = new Chatbot("ROBO-BOT-AUTONOMOUS-MECHANICAL-AI-LEARNING-HUMAN-TALK-MACHINE-TO-ACQUIRE-CURRENCY-AND-HUMAN-FEMALES");
 		display = new ChatbotViewer();
 		chatFrame = new ChatFrame(this);
 	}
-	
-	public void start() 
-	{
-		
-	}
-	
+	/**
+	* Uses all of the chatbot model's checkers to create a response
+	* to the user's input.
+	* @param input The input to check with all the checkers.
+	* @return the chatbot's response.
+	*/
 	public String useChatbotCheckers(String input) 
 	{
 		String checkedInput = "";
@@ -61,7 +63,11 @@ public class ChatController
 		}
 		return checkedInput;
 	}
-	
+	/**
+	* Creates a random topic from a set list, in the event the user doesn't enter a valid
+	* input, such as an empty string.
+	* @return a String containing the random Topic that the chatBot will talk about.
+	*/
 	private String randomTopicGenerator()
 	{
 		String randomTopic = "";
