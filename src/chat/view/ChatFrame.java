@@ -9,7 +9,10 @@ public class ChatFrame extends JFrame
 {
 	private ChatController baseController;
 	private ChatPanel chatPanel;
-	
+	/**
+	 * Constructs the ChatFrame and initializes its panel
+	 * @param baseController the controller to be used in the construction of the ChatPanel
+	 */
 	public ChatFrame(ChatController baseController)
 	{
 		super();
