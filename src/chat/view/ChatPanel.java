@@ -13,11 +13,29 @@ import java.awt.event.ActionListener;
  */
 public class ChatPanel extends JPanel
 {
+	/**
+	 * The ChatController class that we use to create the Panel
+	 */
 	private ChatController baseController;
+	/**
+	 * Where the user enters text to chat with the bot
+	 */
 	private JTextField entryField;
+	/**
+	 * Where the chatbot responds its text on the GUI
+	 */
 	private JTextArea displayText;
+	/**
+	 * The type of layout to be used: spring
+	 */
 	private SpringLayout baseLayout;
+	/**
+	 * The button to submit your text to the bot
+	 */
 	private JButton enterButton;
+	/**
+	 * A checkbox to change the background color
+	 */
 	private JCheckBox checkBox;
 	/**
 	 * Constructor to create a new ChatPanel with several components.

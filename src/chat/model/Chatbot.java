@@ -17,7 +17,14 @@ public class Chatbot
 	 * An ArrayList of Political Topics
 	 */
 	private ArrayList<String> politicalTopicList;
+	/**
+	 * The name to create the bot with
+	 */
 	private String userName;
+	/**
+	 * the 'secret' topic that the bot will respond to if the user
+	 * guesses it: such as "video games"
+	 */
 	private String content;
 
 	/**
@@ -34,6 +41,9 @@ public class Chatbot
 		this.userName = userName;
 		this.content = "video games";
 	}
+	/**
+	 * Currently unused
+	 */
 	public void start()
 	{
 		

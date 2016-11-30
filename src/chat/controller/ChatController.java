@@ -11,8 +11,17 @@ import chat.view.ChatbotViewer;
  */
 public class ChatController
 {
+	/**
+	 * The Chatbot model to be created to communicate with the user
+	 */
 	private Chatbot stupidBot;
+	/**
+	 * Deprecated-Previously used to display text to user
+	 */
 	private ChatbotViewer display;
+	/**
+	 * The current GUI to show response and input to the user.
+	 */
 	private ChatFrame chatFrame;
 	/**
 	* Constructor for the controller, which creates a Chatbot model, ChatbotViewer and chatFrame.
