@@ -172,17 +172,18 @@ public class Chatbot
 	 */
 	public boolean inputHTMLChecker(String currentInput)
 	{
+		String input = currentInput.toLowerCase();
 		boolean isValidHTML = false;
-		if (currentInput.startsWith("<B>") && currentInput.endsWith("</B>"))
+		if (input.startsWith("<B>") && input.endsWith("</B>"))
 		{
 			isValidHTML = true;
-		} else if (currentInput.startsWith("<I>") && currentInput.endsWith("</i>"))
+		} else if (input.startsWith("<I>") && input.endsWith("</i>"))
 		{
 			isValidHTML = true;
-		} else if (currentInput.startsWith("<P>"))
+		} else if (input.startsWith("<P>"))
 		{
 			isValidHTML = true;
-		} else if (currentInput.startsWith("<A HREF="))
+		} else if (input.startsWith("<A HREF="))
 		{
 			isValidHTML = true;		
 		}
