@@ -37,6 +37,9 @@ public class ChatPanel extends JPanel
 	 * A checkbox to change the background color
 	 */
 	private JCheckBox checkBox;
+
+	private JScrollPane scrollPane;
+	
 	/**
 	 * Constructor to create a new ChatPanel with several components.
 	 * @param baseController the ChatController used to communicate with the controller
@@ -52,7 +55,8 @@ public class ChatPanel extends JPanel
 		displayText = new JTextArea("What do you want to talk about?");
 		enterButton = new JButton("Enter!");
 		checkBox = new JCheckBox("Change Color!");
-		
+		scrollPane = new JScrollPane();
+
 		
 		setupDisplayText();
 		setupPanel();
@@ -85,6 +89,7 @@ public class ChatPanel extends JPanel
 		this.add(displayText);
 		this.add(enterButton);
 		this.add(checkBox);
+		this.add(scrollPane);
 	}
 	/**
 	 * A code dump helper method for keeping all the constraint code in a contained area.
@@ -104,6 +109,10 @@ public class ChatPanel extends JPanel
 		baseLayout.putConstraint(SpringLayout.NORTH, enterButton, 4, SpringLayout.SOUTH, entryField);
 		baseLayout.putConstraint(SpringLayout.WEST, enterButton, 0, SpringLayout.WEST, entryField);
 		baseLayout.putConstraint(SpringLayout.EAST, enterButton, 0, SpringLayout.EAST, entryField);
+		baseLayout.putConstraint(SpringLayout.NORTH, scrollPane, 25, SpringLayout.NORTH, this);
+		baseLayout.putConstraint(SpringLayout.WEST, scrollPane, 50, SpringLayout.WEST, this);
+		baseLayout.putConstraint(SpringLayout.SOUTH, scrollPane, 100, SpringLayout.NORTH, this);
+		baseLayout.putConstraint(SpringLayout.EAST, scrollPane, -50, SpringLayout.EAST, this);
 	}
 	/**
 	 * adds ActionListeners to the enterButton and checkBox, to send text to the chatbot and
