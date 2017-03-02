@@ -38,7 +38,7 @@ public class ChatFrame extends JFrame
 	{
 		this.setContentPane(chatPanel);
 		this.setTitle("Chatbot Window");
-		this.setSize(new Dimension(500, 500));
+		this.setSize(new Dimension(750, 500));
 		this.setVisible(true);
 	}
 }
