@@ -123,6 +123,12 @@ public class ChatController
 		return randomTopic;
 	}
 	
+	public void handleErrors(Exception currentException)
+	{
+		display.displayMessage("An error has occurred. Details:");
+		display.displayMessage(currentException.getMessage());
+	}
+	
 	public ChatFrame getBaseFrame()
 	{
 		return chatFrame;
