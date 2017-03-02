@@ -13,32 +13,19 @@ import java.awt.event.ActionListener;
  */
 public class ChatPanel extends JPanel
 {
-	/**
-	 * The ChatController class that we use to create the Panel
-	 */
-	private ChatController baseController;
-	/**
-	 * Where the user enters text to chat with the bot
-	 */
-	private JTextField entryField;
-	/**
-	 * Where the chatbot responds its text on the GUI
-	 */
-	private JTextArea displayText;
-	/**
-	 * The type of layout to be used: spring
-	 */
-	private SpringLayout baseLayout;
-	/**
-	 * The button to submit your text to the bot
-	 */
-	private JButton enterButton;
-	/**
-	 * A checkbox to change the background color
-	 */
-	private JCheckBox checkBox;
 
+	private ChatController baseController;
+	private JTextField entryField;
+	private JTextArea displayText;
+	private SpringLayout baseLayout;
+	private JCheckBox checkBox;
 	private JScrollPane scrollPane;
+	
+	private JButton enterButton;
+	private JButton searchTwitterButton;
+	private JButton sendTweetButton;
+	private JButton saveButton;
+	private JButton loadButton;
 	
 	/**
 	 * Constructor to create a new ChatPanel with several components.
@@ -53,9 +40,21 @@ public class ChatPanel extends JPanel
 		entryField = new JTextField("\n");
 		entryField.setToolTipText("Enter Here!");
 		displayText = new JTextArea("What do you want to talk about?");
-		enterButton = new JButton("Enter!");
+
 		checkBox = new JCheckBox("Change Color!");
 		scrollPane = new JScrollPane();
+		
+		enterButton = new JButton("Chat!");
+		searchTwitterButton = new JButton("Search");
+		
+		sendTweetButton = new JButton("Tweet");
+		
+		
+		saveButton = new JButton("Save");
+		
+		loadButton = new JButton("Load");
+		
+		
 
 		
 		setupDisplayText();
@@ -84,12 +83,16 @@ public class ChatPanel extends JPanel
 		
 		//entryField.isEnabled();
 		
-	
 		this.add(entryField);
 		this.add(displayText);
-		this.add(enterButton);
 		this.add(checkBox);
 		this.add(scrollPane);
+		
+		this.add(enterButton);
+		this.add(searchTwitterButton);
+		this.add(sendTweetButton);
+		this.add(saveButton);
+		this.add(loadButton);
 	}
 	/**
 	 * A code dump helper method for keeping all the constraint code in a contained area.
@@ -113,6 +116,14 @@ public class ChatPanel extends JPanel
 		baseLayout.putConstraint(SpringLayout.WEST, scrollPane, 50, SpringLayout.WEST, this);
 		baseLayout.putConstraint(SpringLayout.SOUTH, scrollPane, 100, SpringLayout.NORTH, this);
 		baseLayout.putConstraint(SpringLayout.EAST, scrollPane, -50, SpringLayout.EAST, this);
+		baseLayout.putConstraint(SpringLayout.WEST, searchTwitterButton, 10, SpringLayout.WEST, this);
+		baseLayout.putConstraint(SpringLayout.SOUTH, searchTwitterButton, -27, SpringLayout.SOUTH, this);
+		baseLayout.putConstraint(SpringLayout.NORTH, sendTweetButton, 0, SpringLayout.NORTH, searchTwitterButton);
+		baseLayout.putConstraint(SpringLayout.WEST, sendTweetButton, 6, SpringLayout.EAST, searchTwitterButton);
+		baseLayout.putConstraint(SpringLayout.NORTH, saveButton, 0, SpringLayout.NORTH, searchTwitterButton);
+		baseLayout.putConstraint(SpringLayout.WEST, saveButton, 6, SpringLayout.EAST, sendTweetButton);
+		baseLayout.putConstraint(SpringLayout.NORTH, loadButton, 0, SpringLayout.NORTH, searchTwitterButton);
+		baseLayout.putConstraint(SpringLayout.WEST, loadButton, 6, SpringLayout.EAST, saveButton);
 	}
 	/**
 	 * adds ActionListeners to the enterButton and checkBox, to send text to the chatbot and
