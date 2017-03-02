@@ -9,7 +9,7 @@ public class ChatbotViewer
 	private String windowMessage;
 	public ChatbotViewer()
 	{
-		//chatBotIcon = new ImageIcon(getClass().getResource("images/chatbot.png"));
+		chatBotIcon = new ImageIcon(getClass().getResource("images/chatbot.png"));
 		windowMessage = "SwagBot";
 	}
 	

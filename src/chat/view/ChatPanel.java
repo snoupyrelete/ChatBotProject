@@ -2,10 +2,13 @@ package chat.view;
 
 import java.awt.Color;
 import chat.controller.ChatController;
+import chat.controller.FileController;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import java.io.File;
 /**
  * The ChatPanel to display the GUI to the user
  * @author Dylan Robson
@@ -27,6 +30,7 @@ public class ChatPanel extends JPanel
 	private JButton saveButton;
 	private JButton loadButton;
 	
+	private JFileChooser fileChooser;
 	/**
 	 * Constructor to create a new ChatPanel with several components.
 	 * @param baseController the ChatController used to communicate with the controller
@@ -47,6 +51,9 @@ public class ChatPanel extends JPanel
 		sendTweetButton = new JButton("Tweet");
 		saveButton = new JButton("Save");
 		loadButton = new JButton("Load");
+		
+		fileChooser = new JFileChooser();
+		fileChooser.setCurrentDirectory(new File("/Users/drob8896"));
 		
 		
 
@@ -88,6 +95,8 @@ public class ChatPanel extends JPanel
 		this.add(sendTweetButton);
 		this.add(saveButton);
 		this.add(loadButton);
+		
+		saveButton.setToolTipText("Put name in textfiled to name the file");
 	
 	}
 	/**
@@ -150,6 +159,44 @@ public class ChatPanel extends JPanel
 			public void actionPerformed(ActionEvent selection)
 			{
 				changeBackground();
+			}
+		});
+		saveButton.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent click)
+			{
+				int result = fileChooser.showSaveDialog(baseController.getBaseFrame());
+
+				
+				if (result == JFileChooser.APPROVE_OPTION)
+				{
+					String selectedFile = fileChooser.getSelectedFile().toString();
+					FileController.saveFile(baseController, selectedFile, displayText.getText());
+				}
+				
+				//String fileName = entryField.getText();
+				
+				
+			}
+				
+		});
+		
+		loadButton.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent click)
+			{
+				int result = fileChooser.showOpenDialog(baseController.getBaseFrame());
+				
+				if (result == JFileChooser.APPROVE_OPTION)
+				{
+					String selectedFile = fileChooser.getSelectedFile().getName();
+					String saved = FileController.readFile(baseController, selectedFile);
+					displayText.setText(saved);
+				}
+				
+				//String fileName = entryField.getText().trim();
+//				String saved = FileController.readFile(baseController, fileName + ".txt");
+//				displayText.setText(saved);
 			}
 		});
 	}
