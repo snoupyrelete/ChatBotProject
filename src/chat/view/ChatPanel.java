@@ -189,7 +189,7 @@ public class ChatPanel extends JPanel
 				
 				if (result == JFileChooser.APPROVE_OPTION)
 				{
-					String selectedFile = fileChooser.getSelectedFile().getName();
+					File selectedFile = fileChooser.getSelectedFile();
 					String saved = FileController.readFile(baseController, selectedFile);
 					displayText.setText(saved);
 				}

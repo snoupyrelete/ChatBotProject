@@ -41,13 +41,13 @@ public class FileController
 		}
 	}
 	
-	public static String readFile(ChatController baseController, String fileName)
+	public static String readFile(ChatController baseController, File fileName)
 	{
 		String fileContents = "";
 		
 		try 
 		{
-			Scanner fileReader = new Scanner(new File(fileName));
+			Scanner fileReader = new Scanner(fileName);
 			while(fileReader.hasNextLine())
 			{
 				fileContents += fileReader.nextLine();
