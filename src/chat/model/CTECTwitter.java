@@ -7,10 +7,12 @@ import twitter4j.TwitterException;
 import twitter4j.TwitterFactory;
 import twitter4j.Twitter;
 import twitter4j.Status;
+import twitter4j.Paging;
 
 import java.util.List;
 import java.util.Scanner;
 import java.util.ArrayList;
+
 public class CTECTwitter 
 {
 	private ChatController baseController;
@@ -64,31 +66,119 @@ public class CTECTwitter
 	
 	public String getMostCommonWord(String user)
 	{
-		return null;
+		String results = "";
+		
+		getTweets(user);
+		turnStatusesToWords();
+		
+		removeAllBoringWords();
+		removeEmptyText();
+
+		results += "There are " + tweetedWords.size() + " words in the tweets from " + user;
+		return results;
 	}
-	
-	/*
-	* PRIVATE
-	*/
-	
-	// Helper
-//	private String [] createIgnoredWordsArray()
-//	{
-//		Scanner commonWords = new Scanner("commonWords.txt");
-//		while (commonWords.hasNextLine())
-//		{
-//			ignoredWords.add(commonWords.next());
-//		}
-//		commonWords.close();
-//		
-//		System.out.println(ignoredWords.toString());
-//		
-//		return null;
-//	}
-	
-	// Helper
+
 	private void getTweets(String username)
 	{
+		statusList.clear();
+		tweetedWords.clear();
+		
+		Paging statusPage = new Paging(1,100);
+		int page = 1;
+		
+		while(page <= 10)
+		{
+			statusPage.setPage(page);
+			try
+			{
+				statusList.addAll(chatbotTwitter.getUserTimeline(username, statusPage));
+
+			}
+			catch (TwitterException searchTweetError)
+			{
+				baseController.handleErrors(searchTweetError);
+				page = Integer.MAX_VALUE;
+			}
+			
+			page++;
+		}
+		
+		//chatbotTwitter.getUserTimeline();
 		
 	}
+	
+	private String [] createIgnoredWordArray()
+	{
+		
+		String [] boringWords;
+		
+		int wordCount = 0;
+		Scanner wordScanner = new Scanner(this.getClass().getResourceAsStream("commonWords.txt"));
+		while(wordScanner.hasNextLine())
+		{
+			wordScanner.nextLine();
+			wordCount++;
+		}
+		
+		boringWords = new String [wordCount];
+		wordScanner.close();
+		
+		wordScanner = new Scanner(this.getClass().getResourceAsStream("commonWords.txt"));
+		for(int index = 0; index < boringWords.length; index++)
+		{
+			boringWords[index] = wordScanner.nextLine();
+		}
+		
+		wordScanner.close();
+		return boringWords;	
+	}
+	
+	private void turnStatusesToWords()
+	{
+		for(Status currentStatus : statusList)
+		{
+			String tweetText = currentStatus.getText();
+			String [] tweetWords = tweetText.split(" ");
+			for (int index = 0; index < tweetWords.length; index++)
+			{
+				tweetedWords.add(tweetWords[index]);
+			}
+		}
+	}
+	
+	private void removeAllBoringWords()
+	{
+		String [] boringWords = createIgnoredWordArray();
+		for(int index = 0; index < tweetedWords.size(); index++)
+		{
+			for(int boringIndex = 0; boringIndex < boringWords.length; boringIndex++)
+			{
+				if(tweetedWords.get(index).equalsIgnoreCase(boringWords[boringIndex]))
+				{
+					tweetedWords.remove(index);
+					index--;
+					boringIndex = boringWords.length;
+				}
+			}
+		}
+	}
+	
+	private void removeEmptyText()
+	{
+		for(int index = 0; index < tweetedWords.size(); index++)
+		{
+			if(tweetedWords.get(index).trim().equals(""))
+			{
+				tweetedWords.remove(index);
+				index--;
+			}
+		}
+	}
+	
+	
+	
+	
+
+	
+	
 }
