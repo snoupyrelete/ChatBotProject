@@ -163,6 +163,35 @@ public class CTECTwitter
 		}
 	}
 	
+	private String calculatePopularWordAndCount()
+	{
+		String info = "";
+		String popWord = "";
+		int popIndex = 0;
+		int popCount = 0;
+		
+		for(int index = 0; index < tweetedWords.size(); index++)
+		{
+			int currentPop = 0;
+			for(int searched = index + 1; searched < tweetedWords.size(); index++)
+			{
+				if(tweetedWords.get(index).equalsIgnoreCase(tweetedWords.get(searched)))
+				{
+					currentPop++;
+				}
+			}
+			if(currentPop > popCount)
+			{
+				popIndex = index;
+				popCount = currentPop;
+				popWord = tweetedWords.get(index);
+			}
+		}
+		
+		info = "The most popular word is: " + popWord + "occuring" + popCount + " times out of " + tweetedWords.size() + "(" + ((double) popCount)/tweetedWords.size() + "%)";
+		return info;
+	}
+	
 	private void removeEmptyText()
 	{
 		for(int index = 0; index < tweetedWords.size(); index++)
