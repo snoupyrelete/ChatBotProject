@@ -37,6 +37,16 @@ public class ChatController
 		twitterBot.sendTweet(text);
 	}
 	
+	public String searchTwitterUser(String user)
+	{
+		String searchResults = "The most popular word by user: " + user + " is ";
+		searchResults += twitterBot.getMostCommonWord(user);
+	
+		// say how many times that word was said
+		
+		
+		return searchResults;
+	}
 	
 	
 	/**
@@ -45,7 +55,6 @@ public class ChatController
 	* @param input The input to check with all the checkers.
 	* @return the chatbot's response.
 	*/
-	
 	public String useChatbotCheckers(String input) 
 	{
 		String checkedInput = "";

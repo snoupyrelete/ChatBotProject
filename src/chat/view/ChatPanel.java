@@ -207,6 +207,15 @@ public class ChatPanel extends JPanel
 				baseController.useTwitter(entryField.getText());
 			}
 		});
+		
+		searchTwitterButton.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent click)
+			{
+				String results = baseController.searchTwitterUser(entryField.getText());
+				displayText.setText(results + displayText.getText());
+			}
+		});
 	}
 	/**
 	 * Generates a random RGB color and sets the panel's background to

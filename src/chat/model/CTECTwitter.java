@@ -16,15 +16,17 @@ public class CTECTwitter
 	private ChatController baseController;
 	private Twitter chatbotTwitter;
 	private List<Status> statusList;
-	private List<String> ignoredWords;
+	private List<String> tweetedWords;
+	
+	//private List<String> ignoredWords;
 	
 	public CTECTwitter(ChatController baseController)
 	{
 		this.baseController = baseController;
 		this.statusList = new ArrayList<Status>();
-		this.ignoredWords = new ArrayList<String>();
-		createIgnoredWordsList();
+		this.tweetedWords = new ArrayList<String>();
 		this.chatbotTwitter = TwitterFactory.getSingleton();
+		//createIgnoredWordsList();
 		
 		//sendTweet("I, DROB just tweeted from my Java Chatbot program 2017! #APCSRocks @CTECNow Thanks @cscheerleader & @codyhenrichsen! @ChatbotCTEC");
 	}
@@ -45,7 +47,7 @@ public class CTECTwitter
 		}
 	}
 	
-	public void searchTweets()
+	public void searchTweets(String username)
 	{
 		try
 		{
@@ -60,7 +62,7 @@ public class CTECTwitter
 		}
 	}
 	
-	public String getMostCommonWord()
+	public String getMostCommonWord(String user)
 	{
 		return null;
 	}
@@ -70,17 +72,19 @@ public class CTECTwitter
 	*/
 	
 	// Helper
-	private void createIgnoredWordsList()
-	{
-		Scanner commonWords = new Scanner("commonWords.txt");
-		while (commonWords.hasNextLine())
-		{
-			ignoredWords.add(commonWords.next());
-		}
-		commonWords.close();
-		
-		System.out.println(ignoredWords.toString());
-	}
+//	private String [] createIgnoredWordsArray()
+//	{
+//		Scanner commonWords = new Scanner("commonWords.txt");
+//		while (commonWords.hasNextLine())
+//		{
+//			ignoredWords.add(commonWords.next());
+//		}
+//		commonWords.close();
+//		
+//		System.out.println(ignoredWords.toString());
+//		
+//		return null;
+//	}
 	
 	// Helper
 	private void getTweets(String username)
