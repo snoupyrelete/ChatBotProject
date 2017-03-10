@@ -7,10 +7,14 @@ import twitter4j.TwitterException;
 import twitter4j.TwitterFactory;
 import twitter4j.Twitter;
 import twitter4j.Status;
+import twitter4j.GeoLocation;
 import twitter4j.Paging;
+import twitter4j.Query;
+import twitter4j.QueryResult;
 
 import java.util.List;
 import java.util.Scanner;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class CTECTwitter 
@@ -74,7 +78,9 @@ public class CTECTwitter
 		removeAllBoringWords();
 		removeEmptyText();
 
-		results += "There are " + tweetedWords.size() + " words in the tweets from " + user;
+		//results += "There are " + tweetedWords.size() + " words in the tweets from " + user;
+		results += calculatePopularWordAndCount();
+		results += queryForProgramming();
 		return results;
 	}
 
@@ -109,7 +115,6 @@ public class CTECTwitter
 	
 	private String [] createIgnoredWordArray()
 	{
-		
 		String [] boringWords;
 		
 		int wordCount = 0;
@@ -141,7 +146,7 @@ public class CTECTwitter
 			String [] tweetWords = tweetText.split(" ");
 			for (int index = 0; index < tweetWords.length; index++)
 			{
-				tweetedWords.add(tweetWords[index]);
+				tweetedWords.add(removePunctuation(tweetWords[index]));
 			}
 		}
 	}
@@ -173,9 +178,9 @@ public class CTECTwitter
 		for(int index = 0; index < tweetedWords.size(); index++)
 		{
 			int currentPop = 0;
-			for(int searched = index + 1; searched < tweetedWords.size(); index++)
+			for(int searched = index + 1; searched < tweetedWords.size(); searched++)
 			{
-				if(tweetedWords.get(index).equalsIgnoreCase(tweetedWords.get(searched)))
+				if(tweetedWords.get(index).equalsIgnoreCase(tweetedWords.get(searched)) && !tweetedWords.get(index).equals(popWord))
 				{
 					currentPop++;
 				}
@@ -188,26 +193,59 @@ public class CTECTwitter
 			}
 		}
 		
-		info = "The most popular word is: " + popWord + "occuring" + popCount + " times out of " + tweetedWords.size() + "(" + ((double) popCount)/tweetedWords.size() + "%)";
+		info = "The most popular word is: " + popWord + " occuring " + popCount + " times out of " + tweetedWords.size() + " (" + (DecimalFormat.getPercentInstance().format(((double) popCount)/tweetedWords.size()) + ")");
 		return info;
 	}
 	
 	private void removeEmptyText()
 	{
-		for(int index = 0; index < tweetedWords.size(); index++)
+		for(int index = tweetedWords.size() - 1; index >= 0; index--)
 		{
 			if(tweetedWords.get(index).trim().equals(""))
 			{
 				tweetedWords.remove(index);
-				index--;
 			}
 		}
 	}
 	
+	private String removePunctuation(String currentString)
+	{
+		String punctuation = ".,'?!:;\"(){}^[]<>-";
+				
+		String scrubbedString = "";
+		for (int i = 0; i < currentString.length(); i++)
+		{
+			if (punctuation.indexOf(currentString.charAt(i)) == -1)
+			{
+				scrubbedString += currentString.charAt(i);
+			}
+		}
+		return scrubbedString;
+		
+	}
 	
-	
-	
-
-	
-	
+	public String queryForProgramming()
+	{
+		String results = "";
+		
+		Query query = new Query("programming");
+		query.setCount(250);
+		query.setGeoCode(new GeoLocation(40.587521, -111.869178), 20, Query.MILES);
+		query.setSince("2017-1-1");
+		try
+		{
+			QueryResult result = chatbotTwitter.search(query);
+			results += "Count : " + result.getTweets().size() + "\n";
+			for (Status tweet : result.getTweets())
+			{
+				results += "@"+ tweet.getUser().getName()+ ": " + tweet.getText() + "\n";
+			}
+			
+		}
+		catch (TwitterException e)
+		{
+			baseController.handleErrors(e);
+		}
+		return results; 
+	}
 }
