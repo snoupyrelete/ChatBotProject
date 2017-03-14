@@ -37,6 +37,11 @@ public class ChatController
 		twitterBot.sendTweet(text);
 	}
 	
+	public void searchForProgramming()
+	{
+		twitterBot.queryForProgramming();
+	}
+	
 	public String searchTwitterUser(String user)
 	{
 		String searchResults = "The most popular word by user: " + user + " is ";

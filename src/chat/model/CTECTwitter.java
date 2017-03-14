@@ -227,25 +227,33 @@ public class CTECTwitter
 	public String queryForProgramming()
 	{
 		String results = "";
-		
-		Query query = new Query("programming");
-		query.setCount(250);
-		query.setGeoCode(new GeoLocation(40.587521, -111.869178), 20, Query.MILES);
-		query.setSince("2017-1-1");
-		try
+		String [] queryWords = {"for sale", "garage sale", "ksl classifieds",
+				"classifieds", "selliing","yard sale", "selling", "antique", 
+				"vintage", "estate sale", "free", "reward", "compensation", "pay",
+				"physical labor"};
+		for (int index = 0; index < queryWords.length; index++)
 		{
-			QueryResult result = chatbotTwitter.search(query);
-			results += "Count : " + result.getTweets().size() + "\n";
-			for (Status tweet : result.getTweets())
+			Query query = new Query(queryWords[index]);
+			query.setCount(250);
+			query.setGeoCode(new GeoLocation(40.587521, -111.869178), 20, Query.MILES);
+			query.setSince("2017-1-1");
+			try
 			{
-				results += "@"+ tweet.getUser().getName()+ ": " + tweet.getText() + "\n";
-			}
+				QueryResult result = chatbotTwitter.search(query);
+				results += "Count : " + result.getTweets().size() + "\n";
+				for (Status tweet : result.getTweets())
+				{
+					results += "@"+ tweet.getUser().getName()+ ": " + tweet.getText() + "\n";
+					
+				}
 			
+			}
+			catch (TwitterException e)
+			{
+				baseController.handleErrors(e);
+			}
 		}
-		catch (TwitterException e)
-		{
-			baseController.handleErrors(e);
-		}
+		results += "<font color=\"#4286f4\">text</font>";
 		return results; 
 	}
 }
