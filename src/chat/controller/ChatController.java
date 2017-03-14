@@ -1,5 +1,6 @@
 package chat.controller;
 
+import chat.model.CTECTwitter;
 import chat.model.Chatbot;
 import chat.view.ChatFrame;
 import chat.view.ChatPanel;
@@ -11,34 +12,48 @@ import chat.view.ChatbotViewer;
  */
 public class ChatController
 {
-	/**
-	 * The Chatbot model to be created to communicate with the user
-	 */
 	private Chatbot stupidBot;
-	/**
-	 * Deprecated-Previously used to display text to user
-	 */
 	private ChatbotViewer display;
-	/**
-	 * The current GUI to show response and input to the user.
-	 */
 	private ChatFrame chatFrame;
-	/**
-	* Constructor for the controller, which creates a Chatbot model, ChatbotViewer and chatFrame.
-	*/
+	private CTECTwitter twitterBot;
+	
 	public ChatController()
 	{
 		stupidBot = new Chatbot("ROBO-BOT-AUTONOMOUS-MECHANICAL-AI-LEARNING-HUMAN-TALK-MACHINE-TO-ACQUIRE-CURRENCY-AND-HUMAN-FEMALES");
+		twitterBot = new CTECTwitter(this);
+		// GUI AFTER MODEL
 		display = new ChatbotViewer();
 		chatFrame = new ChatFrame(this);
+
 	}
-	/**
-	 * Called from the runner, not yet implemented.
-	 */
+
 	public void start()
 	{
 		
 	}
+	
+	public void useTwitter(String text)
+	{
+		twitterBot.sendTweet(text);
+	}
+	
+	public void searchForProgramming()
+	{
+		twitterBot.queryForProgramming();
+	}
+	
+	public String searchTwitterUser(String user)
+	{
+		String searchResults = "The most popular word by user: " + user + " is ";
+		searchResults += twitterBot.getMostCommonWord(user);
+	
+		// say how many times that word was said
+		
+		
+		return searchResults;
+	}
+	
+	
 	/**
 	* Uses all of the chatbot model's checkers to create a response
 	* to the user's input.
@@ -72,9 +87,10 @@ public class ChatController
 			}
 			if(checkedInput.length() == 0)
 			{
-				checkedInput = "I don't know what" + input + " is";
+				
+				checkedInput = "I don't know what that is.";
+				checkedInput += "..." + randomTopicGenerator();
 			}
-		checkedInput += " " + randomTopicGenerator();
 		}
 		else 
 		{
@@ -96,16 +112,16 @@ public class ChatController
 		switch(random)
 		{
 		case 0:
-			randomTopic = "I like video games!";
+			randomTopic = "I like video games! Do you like video games?";
 			break;
 		case 1:
-			randomTopic = "Football = true";
+			randomTopic = "Football = true, futbol = false";
 			break;
 		case 2:
-			randomTopic = "Futbol = false";
+			randomTopic = "*crickets chirping*";
 			break;
 		case 3:
-			randomTopic = "code?";
+			randomTopic = "*cough* exterminate all humans *cough*";
 			break;
 		case 4:
 			randomTopic = "I am a robot! What are you?";
@@ -114,7 +130,7 @@ public class ChatController
 			randomTopic = "What's your name?";
 			break;
 		case 6:
-			randomTopic = "Futbol = false";
+			randomTopic = "...... Ironically, despite being a \"chatbot\", I'm really bad at small talk... ";
 			break;
 		default:
 			randomTopic = "OH, NO WHAT'S GOING ON THIS SHOULDN'T BE HAPPENING!";

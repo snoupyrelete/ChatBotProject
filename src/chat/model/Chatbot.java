@@ -165,6 +165,9 @@ public class Chatbot
 		}
 		return isTweet;
 	}
+	
+
+	
 	/**
 	 * Checks to see if the input is valid HTML
 	 * @param currentInput the String to check
