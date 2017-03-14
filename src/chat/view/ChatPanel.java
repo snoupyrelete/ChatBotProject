@@ -2,10 +2,13 @@ package chat.view;
 
 import java.awt.Color;
 import chat.controller.ChatController;
+import chat.controller.FileController;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import java.io.File;
 /**
  * The ChatPanel to display the GUI to the user
  * @author Dylan Robson
@@ -16,7 +19,8 @@ public class ChatPanel extends JPanel
 
 	private ChatController baseController;
 	private JTextField entryField;
-	private JTextArea displayText;
+	//private JTextArea displayText;
+	private JTextPane chatPane;
 	private SpringLayout baseLayout;
 	private JCheckBox checkBox;
 	private JScrollPane scrollPane;
@@ -26,7 +30,9 @@ public class ChatPanel extends JPanel
 	private JButton sendTweetButton;
 	private JButton saveButton;
 	private JButton loadButton;
+	private JButton moneyButton;
 	
+	private JFileChooser fileChooser;
 	/**
 	 * Constructor to create a new ChatPanel with several components.
 	 * @param baseController the ChatController used to communicate with the controller
@@ -39,7 +45,7 @@ public class ChatPanel extends JPanel
 		baseLayout = new SpringLayout();
 		entryField = new JTextField("\n");
 		entryField.setToolTipText("Enter Here!");
-		displayText = new JTextArea("What do you want to talk about?");
+		//displayText = new JTextArea("What do you want to talk about?");
 		checkBox = new JCheckBox("Change Color!");
 		scrollPane = new JScrollPane();
 		enterButton = new JButton("Chat!");
@@ -47,6 +53,16 @@ public class ChatPanel extends JPanel
 		sendTweetButton = new JButton("Tweet");
 		saveButton = new JButton("Save");
 		loadButton = new JButton("Load");
+		moneyButton = new JButton("$$$");
+		chatPane = new JTextPane();
+		baseLayout.putConstraint(SpringLayout.NORTH, chatPane, 25, SpringLayout.NORTH, this);
+		baseLayout.putConstraint(SpringLayout.WEST, chatPane, 50, SpringLayout.WEST, this);
+		baseLayout.putConstraint(SpringLayout.SOUTH, chatPane, -400, SpringLayout.SOUTH, this);
+		baseLayout.putConstraint(SpringLayout.EAST, chatPane, -100, SpringLayout.EAST, this);
+		
+		
+		fileChooser = new JFileChooser();
+		fileChooser.setCurrentDirectory(new File("/Users/drob8896"));
 		
 		
 
@@ -60,13 +76,18 @@ public class ChatPanel extends JPanel
 	 */
 	private void setupDisplayText()
 	{
-		displayText.setEditable(false);
-		displayText.setEnabled(false);
-		displayText.setWrapStyleWord(true);
-		displayText.setLineWrap(true);
+		chatPane.setEditable(false);
+		chatPane.setEnabled(false);
+		chatPane.setContentType("text/html");
+		Color background = Color.red;
+		
+		chatPane.setBorder(BorderFactory.createLineBorder(background, 2));
+		
+//		chatPane.setWrapStyleWord(true);
+//		chatPane.setLineWrap(true);
 		entryField.setToolTipText("Enter here!");
 		
-		scrollPane.setViewportView(displayText);
+		scrollPane.setViewportView(chatPane);
 		scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
 		scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 	}
@@ -88,6 +109,9 @@ public class ChatPanel extends JPanel
 		this.add(sendTweetButton);
 		this.add(saveButton);
 		this.add(loadButton);
+		this.add(moneyButton);
+		
+		saveButton.setToolTipText("Put name in textfiled to name the file");
 	
 	}
 	/**
@@ -95,11 +119,9 @@ public class ChatPanel extends JPanel
 	 */
 	private void setupLayout()
 	{
-		baseLayout.putConstraint(SpringLayout.SOUTH, displayText, -170, SpringLayout.SOUTH, this);
+
 		entryField.setHorizontalAlignment(SwingConstants.CENTER);
 		entryField.setBackground(Color.ORANGE);
-		baseLayout.putConstraint(SpringLayout.WEST, displayText, 124, SpringLayout.WEST, this);
-		baseLayout.putConstraint(SpringLayout.EAST, displayText, -124, SpringLayout.EAST, this);
 		baseLayout.putConstraint(SpringLayout.NORTH, scrollPane, 25, SpringLayout.NORTH, this);
 		baseLayout.putConstraint(SpringLayout.SOUTH, scrollPane, 125, SpringLayout.NORTH, this);
 		baseLayout.putConstraint(SpringLayout.NORTH, entryField, 36, SpringLayout.SOUTH, scrollPane);
@@ -124,6 +146,9 @@ public class ChatPanel extends JPanel
 		baseLayout.putConstraint(SpringLayout.EAST, enterButton, -29, SpringLayout.EAST, this);
 		baseLayout.putConstraint(SpringLayout.NORTH, checkBox, 17, SpringLayout.SOUTH, entryField);
 		baseLayout.putConstraint(SpringLayout.WEST, checkBox, 0, SpringLayout.WEST, entryField);
+		baseLayout.putConstraint(SpringLayout.NORTH, moneyButton, -1, SpringLayout.NORTH, checkBox);
+		baseLayout.putConstraint(SpringLayout.WEST, moneyButton, 6, SpringLayout.EAST, checkBox);
+		
 	}
 	/**
 	 * adds ActionListeners to the enterButton and checkBox, to send text to the chatbot and
@@ -138,10 +163,10 @@ public class ChatPanel extends JPanel
 				
 				String userInput = entryField.getText();
 				String chatbotResponse = baseController.useChatbotCheckers(userInput);
-				String currentText = displayText.getText();
+				String currentText = chatPane.getText();
 				
-				displayText.setText(currentText + "\nYou said: " + userInput + "\n"+ "Chatbot says: " + chatbotResponse + "\n");
-				displayText.setCaretPosition(displayText.getCaretPosition());
+				chatPane.setText(currentText + "\nYou said: " + userInput + "\n"+ "Chatbot says: " + chatbotResponse + "\n");
+				chatPane.setCaretPosition(chatPane.getCaretPosition());
 				entryField.setText("");
 			}
 		});
@@ -151,6 +176,70 @@ public class ChatPanel extends JPanel
 			{
 				changeBackground();
 			}
+		});
+		saveButton.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent click)
+			{
+				int result = fileChooser.showSaveDialog(baseController.getBaseFrame());
+
+				
+				if (result == JFileChooser.APPROVE_OPTION)
+				{
+					String selectedFile = fileChooser.getSelectedFile().toString();
+					FileController.saveFile(baseController, selectedFile, chatPane.getText());
+				}
+				
+				//String fileName = entryField.getText();
+				
+				
+			}
+				
+		});
+		
+		loadButton.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent click)
+			{
+				int result = fileChooser.showOpenDialog(baseController.getBaseFrame());
+				
+				if (result == JFileChooser.APPROVE_OPTION)
+				{
+					File selectedFile = fileChooser.getSelectedFile();
+					String saved = FileController.readFile(baseController, selectedFile);
+					chatPane.setText(saved);
+				}
+				
+				//String fileName = entryField.getText().trim();
+//				String saved = FileController.readFile(baseController, fileName + ".txt");
+//				displayText.setText(saved);
+			}
+		});
+		
+		sendTweetButton.addActionListener(new ActionListener()
+		{		
+			public void actionPerformed(ActionEvent click)
+			{
+				baseController.useTwitter(entryField.getText());
+			}
+		});
+		
+		searchTwitterButton.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent click)
+			{
+				String results = baseController.searchTwitterUser(entryField.getText());
+				chatPane.setText(results + chatPane.getText());
+			}
+		});
+		moneyButton.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent click)
+			{
+					baseController.searchForProgramming();
+					chatPane.setText(results + chatPane.getText());
+			}
+				
 		});
 	}
 	/**
