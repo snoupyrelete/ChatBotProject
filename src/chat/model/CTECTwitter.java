@@ -240,7 +240,7 @@ public class CTECTwitter
 			try
 			{
 				QueryResult result = chatbotTwitter.search(query);
-				results += "Count : " + result.getTweets().size() + "\n";
+				//results += "Count : " + result.getTweets().size() + "\n";
 				for (Status tweet : result.getTweets())
 				{
 					results += "|" + "@"+ tweet.getUser().getScreenName()+ ": " + tweet.getText(); 

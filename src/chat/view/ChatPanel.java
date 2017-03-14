@@ -257,11 +257,11 @@ public class ChatPanel extends JPanel
 					{
 						if (index % 2 == 0)
 						{
-							text += "<font color=\"green\">" + lines[index] + "</font>" + "\n"; 
+							text += "<font color=\"green\">" + lines[index] + "</font>" + "<br/>"; 
 						}
 						else 
 						{
-							text += "<font color=\"orange\">" + lines[index] + "</font>" + "\n";
+							text += "<font color=\"orange\">" + lines[index] + "</font>" + "<br/>";
 						}
 					}
 					chatPane.setText("<html><h1>MAKING $$$...jk most of this is spam</h1><p>" + text  + "</p></body></html>" + "\n");
