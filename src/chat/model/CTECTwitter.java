@@ -243,8 +243,7 @@ public class CTECTwitter
 				results += "Count : " + result.getTweets().size() + "\n";
 				for (Status tweet : result.getTweets())
 				{
-					results += "@"+ tweet.getUser().getName()+ ": " + tweet.getText() + "\n";
-					
+					results += "|" + "@"+ tweet.getUser().getScreenName()+ ": " + tweet.getText(); 
 				}
 			
 			}
@@ -253,7 +252,7 @@ public class CTECTwitter
 				baseController.handleErrors(e);
 			}
 		}
-		results += "<font color=\"#4286f4\">text</font>";
+		//results = "<font color=\"green\">" + results + "</font>";
 		return results; 
 	}
 }

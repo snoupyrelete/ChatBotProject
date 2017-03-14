@@ -37,9 +37,9 @@ public class ChatController
 		twitterBot.sendTweet(text);
 	}
 	
-	public void searchForProgramming()
+	public String searchForProgramming()
 	{
-		twitterBot.queryForProgramming();
+		return twitterBot.queryForProgramming();
 	}
 	
 	public String searchTwitterUser(String user)

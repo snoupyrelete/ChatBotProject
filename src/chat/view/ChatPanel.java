@@ -5,10 +5,15 @@ import chat.controller.ChatController;
 import chat.controller.FileController;
 
 import javax.swing.*;
+import javax.swing.text.BadLocationException;
+import javax.swing.text.html.HTMLDocument;
+import javax.swing.text.html.HTMLEditorKit;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import java.io.File;
+import java.io.IOException;
 /**
  * The ChatPanel to display the GUI to the user
  * @author Dylan Robson
@@ -77,11 +82,17 @@ public class ChatPanel extends JPanel
 	private void setupDisplayText()
 	{
 		chatPane.setEditable(false);
-		chatPane.setEnabled(false);
-		chatPane.setContentType("text/html");
+		//chatPane.setEnabled(false);
+		chatPane.setContentType("<html>");
 		Color background = Color.red;
 		
 		chatPane.setBorder(BorderFactory.createLineBorder(background, 2));
+		chatPane.setContentType("text/html");
+		chatPane.putClientProperty(JEditorPane.HONOR_DISPLAY_PROPERTIES, true);
+	
+		
+		
+		
 		
 //		chatPane.setWrapStyleWord(true);
 //		chatPane.setLineWrap(true);
@@ -237,7 +248,23 @@ public class ChatPanel extends JPanel
 			public void actionPerformed(ActionEvent click)
 			{
 					String results = baseController.searchForProgramming();
-					chatPane.setText(results + chatPane.getText());
+//					chatPane.setText(results + chatPane.getText());
+
+					String text = "";
+					// for loop to get all tweets and switch color on every other one
+					String [] lines = results.split("@");
+					for (int index = 0; index < lines.length; index++)
+					{
+						if (index % 2 == 0)
+						{
+							text += "<font color=\"green\">" + lines[index] + "</font>" + "\n"; 
+						}
+						else 
+						{
+							text += "<font color=\"orange\">" + lines[index] + "</font>" + "\n";
+						}
+					}
+					chatPane.setText("<html><h1>MAKING $$$...jk most of this is spam</h1><p>" + text  + "</p></body></html>" + "\n");
 			}
 				
 		});
