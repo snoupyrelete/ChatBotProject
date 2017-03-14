@@ -243,6 +243,7 @@ public class CTECTwitter
 				//results += "Count : " + result.getTweets().size() + "\n";
 				for (Status tweet : result.getTweets())
 				{
+					// TODO: How to split by pipe?? too slow!
 					results += "|" + "@"+ tweet.getUser().getScreenName()+ ": " + tweet.getText(); 
 				}
 			

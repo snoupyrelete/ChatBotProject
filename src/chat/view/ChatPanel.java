@@ -265,8 +265,7 @@ public class ChatPanel extends JPanel
 						}
 					}
 					chatPane.setText("<html><h1>MAKING $$$...jk most of this is spam</h1><p>" + text  + "</p></body></html>" + "\n");
-			}
-				
+			}	
 		});
 	}
 	/**
