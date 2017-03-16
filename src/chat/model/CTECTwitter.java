@@ -80,7 +80,7 @@ public class CTECTwitter
 
 		//results += "There are " + tweetedWords.size() + " words in the tweets from " + user;
 		results += calculatePopularWordAndCount();
-		results += queryForProgramming();
+		results += queryForMoney();
 		return results;
 	}
 
@@ -224,9 +224,9 @@ public class CTECTwitter
 		
 	}
 	
-	public String queryForProgramming()
+	public String queryForMoney()
 	{
-		String results = "";
+		String results = "1q2w";
 		String [] queryWords = {"for sale", "garage sale", "ksl classifieds",
 				"classifieds", "selliing","yard sale", "selling", "antique", 
 				"vintage", "estate sale", "free", "reward", "compensation", "pay",
@@ -244,7 +244,7 @@ public class CTECTwitter
 				for (Status tweet : result.getTweets())
 				{
 					// TODO: How to split by pipe?? too slow!
-					results += "|" + "@"+ tweet.getUser().getScreenName()+ ": " + tweet.getText(); 
+					results += "@"+ tweet.getUser().getScreenName()+ ": " + tweet.getText() + "1q2w"; 
 				}
 			
 			}

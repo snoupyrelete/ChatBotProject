@@ -82,7 +82,6 @@ public class ChatPanel extends JPanel
 	private void setupDisplayText()
 	{
 		chatPane.setEditable(false);
-		//chatPane.setEnabled(false);
 		chatPane.setContentType("<html>");
 		Color background = Color.red;
 		
@@ -90,12 +89,6 @@ public class ChatPanel extends JPanel
 		chatPane.setContentType("text/html");
 		chatPane.putClientProperty(JEditorPane.HONOR_DISPLAY_PROPERTIES, true);
 	
-		
-		
-		
-		
-//		chatPane.setWrapStyleWord(true);
-//		chatPane.setLineWrap(true);
 		entryField.setToolTipText("Enter here!");
 		
 		scrollPane.setViewportView(chatPane);
@@ -247,12 +240,12 @@ public class ChatPanel extends JPanel
 		{
 			public void actionPerformed(ActionEvent click)
 			{
-					String results = baseController.searchForProgramming();
+					String results = baseController.searchForMoney();
 //					chatPane.setText(results + chatPane.getText());
 
 					String text = "";
 					// for loop to get all tweets and switch color on every other one
-					String [] lines = results.split("@");
+					String [] lines = results.split("1q2w");
 					for (int index = 0; index < lines.length; index++)
 					{
 						if (index % 2 == 0)
